@@ -1,5 +1,7 @@
+import { environment } from "../environments/environment.js";
+
 class WeatherForecast {
-  search = document.querySelector('.search');
+  search = document.querySelector('.search');  
 
   constructor() {
     this.SearchCity();
@@ -15,6 +17,9 @@ class WeatherForecast {
         document.querySelector('#weather').classList.remove('.show');
         return showAlert('Você precisa digitar uma cidade!');
       }
+
+      const request = `${environment.API_URL}?q=${encodeURI(cityName)}
+      ${environment.API_KEY}${environment.QUERY_PARAMETERS}`
     });
   }
 
