@@ -18,8 +18,13 @@ class WeatherForecast {
         return showAlert('Você precisa digitar uma cidade!');
       }
 
-      const request = `${environment.API_URL}?q=${encodeURI(cityName)}
-      ${environment.API_KEY}${environment.QUERY_PARAMETERS}`
+      const request = `${environment.API_URL}q=${encodeURI(cityName)}
+      ${environment.API_KEY}${environment.QUERY_PARAMETERS}`;
+
+      const results = await fetch(request);
+      const json = await results.json();
+
+      console.log(json)
     });
   }
 
