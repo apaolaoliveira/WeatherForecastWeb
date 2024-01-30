@@ -18,26 +18,22 @@
   <div id="container">
     <form id="search">
       <i class="fa-solid fa-location-dot"></i>
-      <input type="search" name="cityName" id="city-name" placeholder="Buscar cidade">
-      <button type="submit">
+      <input type="search" name="cityName" id="city-name" placeholder="Buscar cidade" aria-label="Digite o nome da cidade">
+      <button type="submit" aria-label="Buscar">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
 
-    <main id="weather">
-      <h1 id="title">Lages, BR</h1>
+    <main id="weather" aria-labelledby="title">
+      <h1 id="title"></h1>
 
       <div id="infos">
         <section id="temp">
-          <img 
-            id="temp-img" 
-            src="http://openweathermap.org/img/wn/04d@2x.png" 
-            alt="imagem da previsão do tempo"
-          >
+          <img id="temp-img" alt="Imagem da previsão do tempo">
 
           <div>
-            <p id="temp-value">25 <sup>ºC</sup></p>
-            <div id="temp-description">Ensolarado</div>
+            <p id="temp-value"></p>
+            <div id="temp-description"></div>
           </div>
         </section>
 
@@ -47,7 +43,7 @@
 
             <div>
               <h2>Máxima</h2>
-              <p id="temp-max">28<sup>ºC</sup></p>
+              <p id="temp-max"></p>
             </div>
           </div>
 
@@ -56,7 +52,7 @@
 
             <div>
               <h2>Mínima</h2>
-              <p id="temp-min">18 <sup>ºC</sup></p>
+              <p id="temp-min"></p>
             </div>
           </div>
 
@@ -65,7 +61,7 @@
 
             <div>
               <h2>Humidade</h2>
-              <p id="humidity">50%</p>
+              <p id="humidity"></p>
             </div>
           </div>
 
@@ -74,7 +70,7 @@
 
             <div>
               <h2>Vento</h2>
-              <p id="wind">50 km/h</p>
+              <p id="wind"></p>
             </div>
           </div>
         </section>
