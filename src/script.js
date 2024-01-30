@@ -44,6 +44,30 @@ class WeatherForecast {
 
   showInfos(json){
     this.showAlert('');
+    this.weather.classList.add('show');
+
+    const elementMap = {
+      'title': `${json.city}, ${json.country}`,
+      'temp-description': json.des,
+      'temp-img': `<img src="https://openweathermap.org/img/wn/${json.tempIcon}@2x.png" alt="imagem da previsão do tempo">`,
+      'temp-value': this.formatTemperature(json.temp),
+      'temp-max': this.formatTemperature(json.tempMax),
+      'temp-min': this.formatTemperature(json.tempMin),
+      'humidity': `${json.humidity}%`,
+      'wind': `${json.windSpeed.toFixed(1)} km/h`
+    };
+
+    for (const id in elementMap) {
+      this.AddInfoToElement(id, elementMap[id]);
+    }
+  }
+
+  AddInfoToElement(id, info){
+    document.getElementById(id).innerHTML = info;
+  }
+
+  formatTemperature(value) {
+    return `${value.toFixed(1).toString().replace('.', ',')} <sup>ºC</sup>`;
   }
 
   showAlert(message){
