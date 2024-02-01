@@ -3,9 +3,10 @@ class WeatherForecast {
   API_KEY = '&appid=9682f6d5e88afd693a36f7e7eaa41feb';
   QUERY_PARAMETERS = '&units=metric&lang=pt_br';
 
-  search = document.getElementById('search');  
   cityName = document.getElementById('city-name');
   weather = document.getElementById('weather');
+  search = document.getElementById('search');  
+  alert = document.getElementById('alert');
 
   constructor() {
     this.SearchCity();
@@ -15,17 +16,13 @@ class WeatherForecast {
     this.search.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      if(!this.cityName.value){
-        this.weather.classList.remove('show');
-        return this.showAlert('Você precisa digitar uma cidade!');
-      }
+      if(!this.cityName.value) return this.showAlert('Você precisa digitar uma cidade!');
 
       const request = `${this.API_URL}${encodeURI(this.cityName.value)}${this.API_KEY}${this.QUERY_PARAMETERS}`;
       const results = await fetch(request);
       const json = await results.json();
 
-      if(json.cod != 200)
-        return this.showAlert('Não foi possível localizar a cidade.');
+      if(json.cod != 200) return this.showAlert('Não foi possível localizar a cidade.');
 
       this.showInfos({
         city: json.name,
@@ -43,11 +40,14 @@ class WeatherForecast {
   }
 
   showAlert(message){
-    document.getElementById('alert').innerHTML = message;
+    this.weather.classList.remove('show');
+    this.alert.classList.add('show');
+    this.alert.innerHTML = message;
   }
 
   showInfos(json){
     this.showAlert('');
+    this.alert.classList.remove('show');
     this.weather.classList.add('show');
 
     const elementMap = {
@@ -67,8 +67,8 @@ class WeatherForecast {
     });
   }
 
-  formatTemperature(value) {
-    return `${value.toFixed(1).toString().replace('.', ',')} <sup>ºC</sup>`;
+  formatTemperature(temp) {
+    return `${temp.toFixed(1).toString().replace('.', ',')} <sup>ºC</sup>`;
   }
 }
 

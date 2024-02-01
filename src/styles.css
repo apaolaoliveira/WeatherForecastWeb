@@ -44,6 +44,10 @@ body {
   outline: none;
 }
 
+#search:focus-within  {
+  border: .1rem solid #5a7cdc;
+}
+
 #search button {
   background-color: transparent;
   border: none;
@@ -53,6 +57,7 @@ body {
 main {
   margin-top: 2rem;
   display: none;
+  width: 36rem;
 }
 
 main.show {
@@ -63,6 +68,7 @@ main #title {
   text-align: center;
   margin-bottom: 1.5rem;
   font-weight: 600;
+  font-size: 2.4rem;
   text-transform: uppercase;
   color: #372f3f;
 }
@@ -133,7 +139,10 @@ main #title {
   align-items: center;
 }
 
-#alert img {
-  width: 20rem;
+#alert.show {
+  background-color: #fab042;
   margin-top: 2rem;
+  padding: .8rem;
+  border-radius: .8rem;
+  font-size: 1.6rem;
 }
