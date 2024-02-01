@@ -1,7 +1,7 @@
 class WeatherForecast {
   API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=';
   API_KEY = '&appid=9682f6d5e88afd693a36f7e7eaa41feb';
-  QUERY_PARAMETERS = '&units=metric&lang=pt_br';
+  QUERY_PARAMETERS = '&units=metric';
 
   cityName = document.getElementById('city-name');
   weather = document.getElementById('weather');
@@ -16,13 +16,14 @@ class WeatherForecast {
     this.search.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      if(!this.cityName.value) return this.showAlert('Você precisa digitar uma cidade!');
+      if(!this.cityName.value) return this.showAlert('Please enter a city name!');
 
       const request = `${this.API_URL}${encodeURI(this.cityName.value)}${this.API_KEY}${this.QUERY_PARAMETERS}`;
       const results = await fetch(request);
       const json = await results.json();
+      console.log(json)
 
-      if(json.cod != 200) return this.showAlert('Não foi possível localizar a cidade.');
+      if(json.cod != 200) return this.showAlert('This city could not be found.');
 
       this.showInfos({
         city: json.name,
